@@ -17,7 +17,6 @@ int InputInterface(string message)
     return value;
 }
 
-
 int[,] Fill(int[,] array)
 {
     int num = 1;
@@ -27,7 +26,7 @@ int[,] Fill(int[,] array)
 
     while (num <= array.GetLength(0) * array.GetLength(1))
     {
-     array[x, y] = num;
+        array[x, y] = num;
 
         switch (dir)
         {
@@ -82,18 +81,26 @@ int[,] Fill(int[,] array)
     return array;
 }
 
-void PrintArray(int[,] array)
+string PrintArray(int[,] array)
 {
-    for (int i = 0; i < array.GetLength(0); i++)
+    int m = array.GetLength(0);
+    int n = array.GetLength(1);
+    string str = "[";
+
+    for (int i = 0; i < m; i++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+        if (i > 0) { str += "]\r\n["; }
+        for (int j = 0; j < n; j++)
         {
-            Console.Write($"{array[i, j]} ");
+            str += array[i, j].ToString("D2");
+            if (j < n - 1) { str += " "; }
         }
-        Console.WriteLine();
     }
+    str += "]";
+    return str;
 }
 
 int size = InputInterface("Введите размер матрицы: ");
-int[,] array = new int[size, size]; array = Fill (array);
-PrintArray (array);
+int[,] array = new int[size, size]; 
+int[,] matrix = Fill(array);
+Console.WriteLine(PrintArray(matrix));
