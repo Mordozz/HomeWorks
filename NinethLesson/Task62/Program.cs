@@ -18,21 +18,21 @@ int InputInterface(string message)
 }
 
 
-int[,] Fill(int[,] matrix)
+int[,] Fill(int[,] array)
 {
     int num = 1;
     int x = 0;
     int y = 0;
     int dir = 0;
 
-    while (num <= matrix.GetLength(0) * matrix.GetLength(1))
+    while (num <= array.GetLength(0) * array.GetLength(1))
     {
-        matrix[x, y] = num;
+     array[x, y] = num;
 
         switch (dir)
         {
             case 0: // Идём вправо
-                if (y == matrix.GetLength(1) - 1 || matrix[x, y + 1] != 0) // право дошли
+                if (y == array.GetLength(1) - 1 || array[x, y + 1] != 0) // право дошли
                 {
                     x++;
                     dir = 1;
@@ -43,7 +43,7 @@ int[,] Fill(int[,] matrix)
                 }
                 break;
             case 1: // вниз
-                if (x == matrix.GetLength(0) - 1 || matrix[x + 1, y] != 0) // вниз дошли
+                if (x == array.GetLength(0) - 1 || array[x + 1, y] != 0) // вниз дошли
                 {
                     y--;
                     dir = 2;
@@ -54,7 +54,7 @@ int[,] Fill(int[,] matrix)
                 }
                 break;
             case 2: // ВЛево
-                if (y == 0 || matrix[x, y - 1] != 0) // лево дошли
+                if (y == 0 || array[x, y - 1] != 0) // лево дошли
                 {
                     x--;
                     dir = 3;
@@ -65,7 +65,7 @@ int[,] Fill(int[,] matrix)
                 }
                 break;
             case 3: // наверх
-                if (x == 0 || matrix[x - 1, y] != 0) // верх дошли
+                if (x == 0 || array[x - 1, y] != 0) // верх дошли
                 {
                     y++;
                     dir = 0;
@@ -79,7 +79,7 @@ int[,] Fill(int[,] matrix)
         num++;
     }
 
-    return matrix;
+    return array;
 }
 
 void PrintArray(int[,] array)
@@ -95,6 +95,5 @@ void PrintArray(int[,] array)
 }
 
 int size = InputInterface("Введите размер матрицы: ");
-int[,] matrix = new int[size, size];
-matrix = Fill(matrix);
-PrintArray(matrix);
+int[,] array = new int[size, size]; array = Fill (array);
+PrintArray (array);
