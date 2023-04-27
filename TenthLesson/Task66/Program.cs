@@ -14,14 +14,15 @@ int InputInterface(string message)
     return value;
 }
 
-int GetSumOfNaturalNumbers(int m, int n){
-     {
-        int sum = 0;
-        for (int i = m; i <= n; i++)
-        {
-            sum += i;
-        }
-        return sum;
+int GetSumOfNaturalNumbers(int m, int n)
+{
+    if (m == n)
+    {
+        return m;
+    }
+    else
+    {
+        return m + GetSumOfNaturalNumbers(m + 1, n);
     }
 }
 
